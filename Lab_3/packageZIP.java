@@ -37,7 +37,7 @@ public class packageZIP {
                     // }
 
                     zipOut.closeEntry();
-
+                    fIn.close();
                 }
                 zipOut.flush();
                 zipOut.close();
