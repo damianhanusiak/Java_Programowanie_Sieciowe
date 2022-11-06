@@ -21,5 +21,18 @@ public class testCallable {
                 number++;
             }
         }
+
+        showTable();
+    }
+
+    public void showTable() {
+        for (int i = 0; i < 200; i++) {
+            if ((i / 10) == 0) {
+                System.out.println(packageMain.tabInt[i]);
+                // System.out.println();
+            } else {
+                System.out.println(packageMain.tabInt[i] + " ");
+            }
+        }
     }
 }
