@@ -34,14 +34,16 @@ public class packageMain {
                 }
             }
         });
-        th.start();
-        try {
-            th.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        TestRunnable tr = new TestRunnable();
-        tr.startThread(10);
+        // th.start();
+        // try {
+        // th.join();
+        // } catch (InterruptedException e) {
+        // e.printStackTrace();
+        // }
+        // TestRunnable tr = new TestRunnable();
+        // tr.startThread(10);
+        testCallable tc = new testCallable();
+        tc.startThread(10);
 
         System.out.println("Zakończenie wątka głównego");
     }

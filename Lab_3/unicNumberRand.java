@@ -3,7 +3,7 @@ package Lab_3;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
-public class unicNumberRand implements Callable<Void> {
+public class unicNumberRand implements Callable<Integer> {
     private int nrThread;
 
     public unicNumberRand(int th) {
@@ -11,15 +11,31 @@ public class unicNumberRand implements Callable<Void> {
     }
 
     @Override
-    public Void call() throws Exception {
+    public Integer call() throws Exception {
+        return randNumber();
+    }
+
+    private synchronized int randNumber() {
         Random rand = new Random();
         System.out.println("Rozpoczęcie pracy " + nrThread);
+        int number = rand.nextInt(400);
+        boolean find = false;
 
-        int id = rand.nextInt(200);
-        packageMain.tabInt[id] = nrThread;
+        while (true) {
+            for (int i = 0; i < 200; i++) {
+                if (packageMain.tabInt[i] == number) {
+                    find = true;
+                }
+            }
 
-        System.out.println("Zakończenie pracy " + nrThread);
+            if (!find) {
+                packageMain.tabInt[nrThread] = number;
+                break;
+            }
+        }
 
-        return null;
+        // System.out.println("Zakończenie pracy " + nrThread);
+
+        return number;
     }
 }
